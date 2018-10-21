@@ -2,10 +2,13 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
-//set the port for HEROKU ENV or default for local env
+// set the port for HEROKU ENV or default for local env
+// heroku create init repo and project on heroku.com
+// git push heroku pushes the changes to the heroku Server
+// heroku open opens the default browser with your project url
 const port = process.env.PORT || 3000;
 
-//to make nodemon update also with the changes in hbs files:
+// to make nodemon update also with the changes in hbs files:
 // nodemon server.js -e js,hbs
 
 const app = express();
@@ -28,6 +31,7 @@ app.use((req, res, next) => {
   next();
 });
 
+// this adds a permanent maintenace page no matter what's the route
 // app.use((req, res, next) => {
 //   res.render('maintenance.hbs', {
 //     pageTitle: 'Maintenance',
@@ -57,6 +61,12 @@ app.get('/about', (req, res) => {
     pageTitle: 'About page'
   });
 });
+
+app.get('/projects', (req, res) => {
+  res.render('projects.hbs', {
+    pageTitle: 'Projects page'
+  })
+})
 
 app.get('/bad', (req, res) => {
   res.send({

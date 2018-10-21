@@ -28,12 +28,12 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use((req, res, next) => {
-  res.render('maintenance.hbs', {
-    pageTitle: 'Maintenance',
-    message: 'Sorry, this website is not available at the moment.'
-  });
-});
+// app.use((req, res, next) => {
+//   res.render('maintenance.hbs', {
+//     pageTitle: 'Maintenance',
+//     message: 'Sorry, this website is not available at the moment.'
+//   });
+// });
 
 // tells express that we want to use hbs as view engine
 app.set('view engine', 'hbs');
